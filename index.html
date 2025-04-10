@@ -7,10 +7,10 @@
     body {
       margin: 0;
       padding: 0;
-      background-image: url('sheep.jpg');
       background-size: cover;
       background-position: center;
       font-family: Arial, sans-serif;
+      transition: background-image 0.5s ease;
     }
 
     .container {
@@ -18,7 +18,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0);
       flex-direction: column;
       text-align: center;
       transition: all 0.5s ease-in-out;
@@ -50,13 +50,45 @@
       display: none;
       font-size: 2rem;
       font-weight: bold;
-      color: #333;
+    }
+
+    .toggle-mode {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .light-mode-btn {
+      background-color: #333;
+      color: white;
+    }
+
+    .light-mode-btn:hover {
+      background-color: #555;
+    }
+
+    .dark-mode-btn {
+      background-color: #f4f4f4;
+      color: #222;
+    }
+
+    .dark-mode-btn:hover {
+      background-color: #ddd;
     }
   </style>
 </head>
-<body>
+<body id="body">
 
-<!-- Original Entry Screen -->
+<!-- Mode Toggle Button -->
+<button class="toggle-mode light-mode-btn" id="modeToggleBtn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+<!-- Input Screen -->
 <div class="container" id="mainContainer">
   <h2>Ask the wise and stoic sheep!</h2>
   <input type="text" id="inputField" placeholder="Enter text..." />
@@ -72,20 +104,59 @@
 </div>
 
 <script>
+  let isDarkMode = false;
+
+  // Initial background
+  const lightBackground = "url('sheep.jpg')";
+  const darkBackground = "url('Sheep2.jpg')";
+
+  document.body.style.backgroundImage = lightBackground;
+  
   function handleSubmit() {
     const audio = document.getElementById("soundEffect");
     audio.play();
-
-    // Show placeholder screen
     document.getElementById("mainContainer").style.display = "none";
     document.getElementById("placeholderMessage").style.display = "flex";
   }
 
   function goBack() {
-    // Go back to input screen
     document.getElementById("placeholderMessage").style.display = "none";
     document.getElementById("mainContainer").style.display = "flex";
   }
+
+  function toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+
+    const body = document.getElementById("body");
+    const modeBtn = document.getElementById("modeToggleBtn");
+
+    if (isDarkMode) {
+      body.style.backgroundImage = darkBackground;
+      modeBtn.textContent = "Toggle Light Mode";
+      modeBtn.classList.remove("light-mode-btn");
+      modeBtn.classList.add("dark-mode-btn");
+    } else {
+      body.style.backgroundImage = lightBackground;
+      modeBtn.textContent = "Toggle Dark Mode";
+      modeBtn.classList.remove("dark-mode-btn");
+      modeBtn.classList.add("light-mode-btn");
+    }
+  }
+  
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      const mainScreen = document.getElementById("mainContainer");
+      const placeholderScreen = document.getElementById("placeholderMessage");
+
+      if (mainScreen.style.display !== "none") {
+        event.preventDefault();
+        handleSubmit();
+      } else if (placeholderScreen.style.display === "flex") {
+        event.preventDefault();
+        goBack();
+      }
+    }
+  });
 </script>
 
 </body>
