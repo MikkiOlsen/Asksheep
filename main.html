@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Play Sound on Submit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input {
+      padding: 0.5rem;
+      width: 200px;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Type Something</h2>
+  <input type="text" id="inputField" placeholder="Enter text..." />
+  <br />
+  <button onclick="handleSubmit()">Submit</button>
+  <audio id="soundEffect" src="https://www.soundjay.com/buttons/sounds/button-09.mp3"></audio>
+</div>
+
+<script>
+  function handleSubmit() {
+    const inputValue = document.getElementById("inputField").value;
+    console.log("Submitted:", inputValue);
+    const audio = document.getElementById("soundEffect");
+    audio.play();
+  }
+</script>
+
+</body>
+</html>
