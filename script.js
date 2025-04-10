@@ -40,12 +40,12 @@ if (isDarkMode) {
 document.addEventListener("keydown", function(event) {
 if (event.key === "Enter") {
   const mainScreen = document.getElementById("mainContainer");
-  const placeholderScreen = document.getElementById("Baa");
+  const Baascreen = document.getElementById("Baa");
 
   if (mainScreen.style.display !== "none") {
 	event.preventDefault();
 	handleSubmit();
-  } else if (placeholderScreen.style.display === "flex") {
+  } else if (Baascreen.style.display === "flex") {
 	event.preventDefault();
 	goBack();
   }
