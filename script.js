@@ -10,11 +10,11 @@ function handleSubmit() {
 const audio = document.getElementById("soundEffect");
 audio.play();
 document.getElementById("mainContainer").style.display = "none";
-document.getElementById("placeholderMessage").style.display = "flex";
+document.getElementById("Baa").style.display = "flex";
 }
 
 function goBack() {
-document.getElementById("placeholderMessage").style.display = "none";
+document.getElementById("Baa").style.display = "none";
 document.getElementById("mainContainer").style.display = "flex";
 }
 
@@ -40,7 +40,7 @@ if (isDarkMode) {
 document.addEventListener("keydown", function(event) {
 if (event.key === "Enter") {
   const mainScreen = document.getElementById("mainContainer");
-  const placeholderScreen = document.getElementById("placeholderMessage");
+  const placeholderScreen = document.getElementById("Baa");
 
   if (mainScreen.style.display !== "none") {
 	event.preventDefault();
