@@ -7,6 +7,7 @@
 </head>
 <body id="body">
 
+
 <button class="toggle-mode light-mode-btn" id="modeToggleBtn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
 <div class="container" id="mainContainer">
@@ -17,9 +18,14 @@
   <audio id="soundEffect" src="Baa.mp3"></audio>
 </div>
 
-<div class="container" id="Baa">
+<div class="container" id="placeholderMessage">
   <div>The wise and stoic sheep says: Baa!</div>
   <button onclick="goBack()">Go Back</button>
+</div>
+
+<div class="container" id="loadingScreen" style="display: none; flex-direction: column;">
+  <div class="spinner"></div>
+  <p id="loadingMessage" style="margin-top: 1rem; font-size: 1.2rem;"></p>
 </div>
 
 <script src="script.js"></script> 
