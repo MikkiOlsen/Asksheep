@@ -1,20 +1,35 @@
 let isDarkMode = false;
 
-// Initial background
 const lightBackground = "url('sheep.jpg')";
 const darkBackground = "url('Sheep2.jpg')";
 
 document.body.style.backgroundImage = lightBackground;
 
 function handleSubmit() {
-const audio = document.getElementById("soundEffect");
-audio.play();
-document.getElementById("mainContainer").style.display = "none";
-document.getElementById("Baa").style.display = "flex";
+  const messages = [
+    "Consulting the sheep...",
+	"Counting sheep..",
+	"Wool gathering in progress...",
+	"Following the trail of hoofprints..."
+  ];
+
+  const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+  document.getElementById("loadingMessage").textContent = randomMessage;
+
+  document.getElementById("mainContainer").style.display = "none";
+  document.getElementById("loadingScreen").style.display = "flex";
+
+  setTimeout(() => {
+    document.getElementById("loadingScreen").style.display = "none";
+    document.getElementById("placeholderMessage").style.display = "flex";
+
+    const audio = document.getElementById("soundEffect");
+    audio.play();
+  }, 1500);
 }
 
 function goBack() {
-document.getElementById("Baa").style.display = "none";
+document.getElementById("placeholderMessage").style.display = "none";
 document.getElementById("mainContainer").style.display = "flex";
 }
 
@@ -40,12 +55,12 @@ if (isDarkMode) {
 document.addEventListener("keydown", function(event) {
 if (event.key === "Enter") {
   const mainScreen = document.getElementById("mainContainer");
-  const Baascreen = document.getElementById("Baa");
+  const placeholderScreen = document.getElementById("placeholderMessage");
 
   if (mainScreen.style.display !== "none") {
 	event.preventDefault();
 	handleSubmit();
-  } else if (Baascreen.style.display === "flex") {
+  } else if (placeholderScreen.style.display === "flex") {
 	event.preventDefault();
 	goBack();
   }
