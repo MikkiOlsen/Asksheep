@@ -4,7 +4,7 @@ padding: 0;
 background-size: cover;
 background-position: center;
 font-family: Arial, sans-serif;
-transition: background-image 0.5s ease;
+transition: background-image 0.8s ease-in-out, background-color 0.5s ease;
 }
 
 .container {
@@ -40,7 +40,7 @@ button:hover {
 background-color: #45a049;
 }
 
-#Baa {
+#placeholderMessage {
 display: none;
 font-size: 2rem;
 font-weight: bold;
@@ -74,4 +74,19 @@ color: #222;
 
 .dark-mode-btn:hover {
 background-color: #ddd;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ccc;
+  border-top: 6px solid #4CAF50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
