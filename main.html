@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wool-dle</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: url('https://images.unsplash.com/photo-1610484826952-1a5f3e8dce0c') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    #guessInput {
+      padding: 10px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    #submitGuess {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      background-color: #ffc107;
+      cursor: pointer;
+    }
+
+    #submitGuess:hover {
+      background-color: #ff9800;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+    #backButton {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #backButton:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <button id="backButton" onclick="window.location.href='index.html'">⬅ Back to Main Site</button>
+  <h1>🐑 Wool-dle</h1>
+  <p>Guess the secret sheepy word!</p>
+  <input type="text" id="guessInput" placeholder="Your guess here...">
+  <button id="submitGuess">Submit</button>
+  <div id="message"></div>
+
+  <script>
+    const answer = "baaaa";
+    const input = document.getElementById("guessInput");
+    const message = document.getElementById("message");
+    const submit = document.getElementById("submitGuess");
+
+    function checkGuess() {
+      const guess = input.value.trim().toLowerCase();
+      if (guess === answer) {
+        message.textContent = "Correct! That’s not a real word. But we’re proud of you anyway.";
+      } else {
+        message.textContent = "Nope. Try again, brave wool-seeker.";
+      }
+      input.value = "";
+      input.focus();
+    }
+
+    submit.addEventListener("click", checkGuess);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkGuess();
+    });
+  </script>
+</body>
+</html>
