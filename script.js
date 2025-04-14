@@ -5,6 +5,23 @@ const darkBackground = "url('Sheep2.jpg')";
 
 document.body.style.backgroundImage = lightBackground;
 
+window.onload = function () {
+  showRandomSheepFact();
+};
+
+const sheepFacts = [
+  "In ancient times, sheep were used as Wi-Fi extenders.",
+  "A single sheep produces enough static electricity to power a small toaster.",
+  "Sheep believe humans are just tall, confused sheep without coats",
+  "A sheep's baa can be heard from space, but only if it really means it.",
+  "If you say 'baaa' three times in a mirror, a sheep will appear and judge you silently."
+];
+
+function showRandomSheepFact() {
+  const fact = sheepFacts[Math.floor(Math.random() * sheepFacts.length)];
+  document.getElementById("sheepFact").textContent = `🐑 Fun Fact: ${fact}`;
+}
+
 function handleSubmit() {
   const messages = [
     "Consulting the sheep...",
@@ -29,8 +46,10 @@ function handleSubmit() {
 }
 
 function goBack() {
-document.getElementById("placeholderMessage").style.display = "none";
-document.getElementById("mainContainer").style.display = "flex";
+  document.getElementById("placeholderMessage").style.display = "none";
+  document.getElementById("mainContainer").style.display = "flex";
+  document.getElementById("inputField").focus();
+  showRandomSheepFact();
 }
 
 function toggleDarkMode() {
