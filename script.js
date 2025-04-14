@@ -28,9 +28,9 @@ function handleSubmit() {
 	"Counting sheep..",
 	"Wool gathering in progress...",
 	"Following the trail of hoofprints...",
-	"Feeling fluffy but emotionally distant",
+	"Feeling fluffy but emotionally distant...",
 	"Today's sheep mood: Mildly suspicious of clouds ☁️👀",
-	"Plotting pasture expansion"
+	"Plotting pasture expansion..."
   ];
 
   const randomMessage = messages[Math.floor(Math.random() * messages.length)];
