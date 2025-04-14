@@ -7,6 +7,19 @@ font-family: Arial, sans-serif;
 transition: background-image 0.8s ease-in-out, background-color 0.5s ease;
 }
 
+#sheepFact {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.8); /* Light transparent background */
+  color: #222; /* Dark text for contrast */
+  font-style: italic;
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  text-align: center;
+}
+
 .container {
 height: 100vh;
 display: flex;
