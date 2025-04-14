@@ -76,6 +76,7 @@
   <p>Guess the secret sheepy word!</p>
   <input type="text" id="guessInput" placeholder="Your guess here...">
   <button id="submitGuess">Submit</button>
+  <audio id="soundEffect" src="Baa.mp3"></audio>
   <div id="message"></div>
 
   <script>
@@ -87,7 +88,9 @@
     function checkGuess() {
       const guess = input.value.trim().toLowerCase();
       if (guess === answer) {
-        message.textContent = "Correct! That’s not a real word. But we’re proud of you anyway.";
+        message.textContent = "Baa!";
+        const audio = document.getElementById("soundEffect");
+        audio.play();
       } else {
         message.textContent = "Nope. Try again, brave wool-seeker.";
       }
