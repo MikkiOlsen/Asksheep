@@ -34,17 +34,27 @@ function randomMessage_Loading_screen(){
   ];
   const randomMessage = messages[Math.floor(Math.random() * messages.length)];
   document.getElementById("loadingMessage").textContent = randomMessage;
+  console.log(randomMessage)
 }
 
-function handleSubmit() {
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function handleSubmit() {
   randomMessage_Loading_screen();
   document.getElementById("mainContainer").style.display = "none";
   document.getElementById("loadingScreen").style.display = "flex";
 
-  setTimeout(() => {
+  for (let i = 0; i < 3; i++) {
     randomMessage_Loading_screen();
-    resultspage();
-  },4000)
+    await sleep(3000);
+  }
+
+  randomMessage_Loading_screen();
+
+  await sleep(4000);
+  resultspage();
 }
 
 function resultspage(){
