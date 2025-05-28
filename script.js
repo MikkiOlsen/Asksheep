@@ -22,9 +22,9 @@ function showRandomSheepFact() {
   document.getElementById("sheepFact").textContent = `🐑 Fun Fact: ${fact}`;
 }
 
-function handleSubmit() {
+function randomMessage_Loading_screen(){
   const messages = [
-    "Consulting the sheep...",
+  "Consulting the sheep...",
 	"Counting sheep..",
 	"Wool gathering in progress...",
 	"Following the trail of hoofprints...",
@@ -32,20 +32,29 @@ function handleSubmit() {
 	"Today's sheep mood: Mildly suspicious of clouds ☁️👀",
 	"Plotting pasture expansion..."
   ];
-
   const randomMessage = messages[Math.floor(Math.random() * messages.length)];
   document.getElementById("loadingMessage").textContent = randomMessage;
+}
 
+function handleSubmit() {
+  randomMessage_Loading_screen();
   document.getElementById("mainContainer").style.display = "none";
   document.getElementById("loadingScreen").style.display = "flex";
 
+  setTimeout(() => {
+    randomMessage_Loading_screen();
+    resultspage();
+  },4000)
+}
+
+function resultspage(){
   setTimeout(() => {
     document.getElementById("loadingScreen").style.display = "none";
     document.getElementById("placeholderMessage").style.display = "flex";
 
     const audio = document.getElementById("soundEffect");
     audio.play();
-  }, 1500);
+  }, 4000);
 }
 
 function goBack() {
